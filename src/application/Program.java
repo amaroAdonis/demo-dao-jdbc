@@ -13,7 +13,6 @@ import java.util.List;
 public class Program {
     public static void main(String[] args) {
 
-
         SellerDao sellerDao = DaoFactory.createSellerDao();
 
         System.out.println("==== TEST 1: seller findById ====");
@@ -26,12 +25,14 @@ public class Program {
         for (Seller obj : list) {
             System.out.println(obj);
         }
-
         System.out.println("\n==== TEST 3: seller findAll ====");
         list = sellerDao.findByDepartment(department);
         for (Seller obj : list) {
             System.out.println(obj);
         }
-
+        System.out.println("\n==== TEST 4: seller insert ====");
+        Seller newSeller = new Seller(null,"Greg","greg@email.com",new Date(),4.000,department);
+        sellerDao.insert(newSeller);
+        System.out.println("Inserted! New id = " + newSeller.getId());
     }
 }
